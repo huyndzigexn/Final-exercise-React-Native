@@ -36,11 +36,11 @@
         "source": "com.lastprojectrn.app-main-7:/drawable/rn_edit_text_material.xml"
     },
     {
-        "merged": "com.lastprojectrn.app-merged_res-5:/mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "com.lastprojectrn.app-main-7:/mipmap-xxhdpi/ic_launcher.png"
-    },
-    {
         "merged": "com.lastprojectrn.app-merged_res-5:/mipmap-xhdpi_ic_launcher.png.flat",
         "source": "com.lastprojectrn.app-main-7:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.lastprojectrn.app-merged_res-5:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.lastprojectrn.app-main-7:/mipmap-xxhdpi/ic_launcher.png"
     }
 ]
