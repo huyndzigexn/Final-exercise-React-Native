@@ -14,6 +14,7 @@ const loginReducer = (state = initialStateLogin, action: any) => {
   const { type, payload } = action;
   switch (action.type) {
     case actionTypes.LOGIN.LOGIN:
+      state.errorMessage = "";
       const validateEmail = (email) => {
         return email.match(
           /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -26,13 +27,14 @@ const loginReducer = (state = initialStateLogin, action: any) => {
           password: payload.password,
         };
       } else {
-        err_mess = "Invalid email address, please re-enter!";
+        let err_mess = "Invalid email address, please re-enter!";
         return {
           ...state,
           errorMessage: err_mess,
         };
       }
     case actionTypes.LOGIN.CHECK_VALIDATE:
+      state.errorMessage = "";
       let message_error =
         payload.email == ""
           ? "Please enter email address"
@@ -53,9 +55,7 @@ const loginReducer = (state = initialStateLogin, action: any) => {
         urlToken: state.urlToken,
       };
     case actionTypes.LOGIN.SUCCESS:
-      async () => {
-        await AsyncStorage.setItem("storageImage", payload.message);
-      };
+      AsyncStorage.setItem("storageImage", payload.message);
       return {
         ...state,
         urlToken: payload.message,
@@ -66,9 +66,7 @@ const loginReducer = (state = initialStateLogin, action: any) => {
         errorMessage: "An error occurred",
       };
     case actionTypes.LOGIN.LOGOUT:
-      async () => {
-        await AsyncStorage.setItem("storageImage", "");
-      };
+      AsyncStorage.setItem("storageImage", "");
       return {
         ...state,
         urlToken: "",

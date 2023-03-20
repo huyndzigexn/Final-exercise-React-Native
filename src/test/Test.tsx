@@ -111,6 +111,10 @@ const Test = (props: any) => {
           console.log(value.data);
           if (value.data.status == "success") {
             props.getImage(value.data);
+          } else {
+            props.getImage(
+              "https://images.dog.ceo/breeds/bluetick/n02088632_1750.jpg"
+            );
           }
         })
         .catch((error) => {
