@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -63,9 +63,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  countDow: {
-    color: "red",
-    fontWeight: "500",
+  waiting: {
+    color: "green",
+    fontWeight: "600",
   },
 });
 export default styles;

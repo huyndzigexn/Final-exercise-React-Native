@@ -11,13 +11,11 @@ const initialState = {
   secondNum: "",
   operator: "",
   enter: "",
-  hoverButton: false,
+  checkPress: "",
 };
 
 export default function (state = initialState, action: any) {
   const { type, payload } = action;
-  console.log("action", action);
-
   switch (action.type) {
     case actionTypes.GET_DOG_IMAGE.SUCCESS:
       return {
@@ -36,7 +34,6 @@ export default function (state = initialState, action: any) {
         ...state,
         username: payload.username,
         password: payload.password,
-        // errorMessage: "An error occurred",
       };
     case actionTypes.GET_DOG_IMAGE.CALCULATE:
       console.log("payload", payload);
@@ -47,7 +44,15 @@ export default function (state = initialState, action: any) {
           state.secondNum = state.secondNum + value;
           state.enter = state.secondNum;
         } else {
-          state.fisrtNum = state.fisrtNum + value;
+          if (
+            value == "." &&
+            (state.enter.slice(-1) == "." ||
+              state.enter.split(".").length - 1 > 0)
+          ) {
+            state.fisrtNum = state.fisrtNum;
+          } else {
+            state.fisrtNum = state.fisrtNum + value;
+          }
           state.enter = state.fisrtNum;
         }
       }
@@ -66,11 +71,16 @@ export default function (state = initialState, action: any) {
           state.enter = state.fisrtNum;
           state.operator = "";
         }
-
+        state.checkPress = value;
         state.operator = value;
+      } else {
+        if (state.secondNum == "") {
+          state.checkPress = "";
+        }
       }
       if (type === "equal") {
         state.enter = eval(state.fisrtNum + state.operator + state.secondNum);
+        state.checkPress = "";
         console.log(state);
       }
       if (type === "clear") {
@@ -95,6 +105,9 @@ export default function (state = initialState, action: any) {
       if (type === "percent") {
         state.enter = String(parseFloat(state.enter) * 0.01);
       }
+      console.log("====================================");
+      console.log(state);
+      console.log("====================================");
       return { ...state };
     case actionTypes.GET_DOG_IMAGE.SECONDNUM:
       return {

@@ -1,37 +1,37 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   bootsplash: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F5FCFF",
   },
   tinyLogo: {
-    width: '100%',
+    width: "100%",
     height: 55,
     marginBottom: 50,
   },
   tinyLogoDetail: {
-    width: '100%',
-    height: '50%',
+    width: "100%",
+    height: "50%",
     marginBottom: 50,
   },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
   image: {
     marginBottom: 40,
   },
   inputView: {
-    backgroundColor: '#dadada',
+    backgroundColor: "#dadada",
     borderRadius: 30,
-    width: '70%',
+    width: "70%",
     height: 45,
     marginBottom: 20,
-    alignItems: 'center',
+    alignItems: "center",
   },
   TextInput: {
     height: 50,
@@ -44,16 +44,20 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   loginBtn: {
-    width: '80%',
+    width: "80%",
     borderRadius: 25,
     height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     marginTop: 40,
-    backgroundColor: '#553819',
+    backgroundColor: "#553819",
   },
   loginText: {
-    color: '#fff',
+    color: "#fff",
+  },
+  errorMessage: {
+    color: "red",
+    fontWeight: "600",
   },
 });
 export default styles;

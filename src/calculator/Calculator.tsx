@@ -2,15 +2,11 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import Button from "./Button";
 import { connect } from "react-redux";
-import {
-  caculateAction,
-  secondNumAction,
-  enterAction,
-  getDogImageRequestAction,
-} from "../redux/actions";
+import { caculateAction } from "../redux/actions";
 
 function App(props: any) {
   const enter = props.dogImageReducer.enter;
+  const checkPress = props.dogImageReducer.checkPress;
 
   const tapScreen = (type: string, value: any) => {
     props.caculate({ type: type, value: value });
@@ -37,7 +33,11 @@ function App(props: any) {
         />
         <Button
           value="/"
-          styles={[styles.btn, styles.btnOrange]}
+          styles={[
+            styles.btn,
+            styles.btnOrange,
+            checkPress == "/" ? styles.btnPressDivide : styles.btnOrange,
+          ]}
           press={() => tapScreen("operator", "/")}
         />
       </View>
@@ -59,7 +59,11 @@ function App(props: any) {
         />
         <Button
           value="x"
-          styles={[styles.btn, styles.btnOrange]}
+          styles={[
+            styles.btn,
+            styles.btnOrange,
+            checkPress == "*" ? styles.btnPressMultiply : styles.btnOrange,
+          ]}
           press={() => tapScreen("operator", "*")}
         />
       </View>
@@ -81,7 +85,11 @@ function App(props: any) {
         />
         <Button
           value="-"
-          styles={[styles.btn, styles.btnOrange]}
+          styles={[
+            styles.btn,
+            styles.btnOrange,
+            checkPress == "-" ? styles.btnPressMinus : styles.btnOrange,
+          ]}
           press={() => tapScreen("operator", "-")}
         />
       </View>
@@ -103,7 +111,11 @@ function App(props: any) {
         />
         <Button
           value="+"
-          styles={[styles.btn, styles.btnOrange]}
+          styles={[
+            styles.btn,
+            styles.btnOrange,
+            checkPress == "+" ? styles.btnPressPlus : styles.btnOrange,
+          ]}
           press={() => tapScreen("operator", "+")}
         />
       </View>
@@ -138,6 +150,26 @@ const mapDispatchToProps = (dispatch: Function) => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 const styles = StyleSheet.create({
+  btnPressPlus: {
+    borderColor: "black",
+    backgroundColor: "#fc5a17",
+    borderWidth: 1,
+  },
+  btnPressMinus: {
+    borderColor: "black",
+    backgroundColor: "#fc5a17",
+    borderWidth: 1,
+  },
+  btnPressMultiply: {
+    borderColor: "black",
+    backgroundColor: "#fc5a17",
+    borderWidth: 1,
+  },
+  btnPressDivide: {
+    borderColor: "black",
+    backgroundColor: "#fc5a17",
+    borderWidth: 1,
+  },
   container: {
     flex: 1,
     backgroundColor: "#202020",

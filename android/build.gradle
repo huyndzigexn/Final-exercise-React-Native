@@ -19,3 +19,5 @@ buildscript {
         classpath("com.facebook.react:react-native-gradle-plugin")
     }
 }
+println(System.env.'JAVA_HOME')
+println(System.getProperty("java.home"))
