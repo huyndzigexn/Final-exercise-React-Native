@@ -47,8 +47,7 @@ export default function (state = initialState, action: any) {
           if (
             value == "." &&
             (state.enter.slice(-1) == "." ||
-              state.enter.split(".").length - 1 > 0) &&
-            state.fisrtNum == ""
+              state.enter.split(".").length - 1 > 0)
           ) {
             state.fisrtNum = state.fisrtNum;
           } else {
