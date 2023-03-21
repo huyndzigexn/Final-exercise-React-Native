@@ -10,6 +10,7 @@ import { Test } from "../test";
 import { Calculator } from "../calculator";
 import Ionicons from "react-native-vector-icons/Ionicons";
 // import Icon from 'react-native-vector-icons/FontAwesome'
+import { useSelector } from "react-redux";
 
 const ImageScreen = () => {
   const [image, setImage] = useState<string>("");
@@ -48,6 +49,9 @@ const ImageScreen = () => {
 
 const Tab = createBottomTabNavigator();
 const DetailsScreen = () => {
+  const [position, listImg] = useSelector((state: any) => {
+    return [state.detailReducer.position, state.detailReducer.arrImage];
+  });
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -55,7 +59,7 @@ const DetailsScreen = () => {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           if (route.name === "Test") {
-            iconName = focused ? "medical" : "medical-outline";
+            // iconName = focused ? "medical" : "medical-outline";
           } else if (route.name === "Calculator") {
             iconName = focused ? "calculator" : "calculator-outline";
           }
@@ -66,7 +70,22 @@ const DetailsScreen = () => {
       })}
     >
       <Tab.Screen name="Calculator" component={Calculator} />
-      <Tab.Screen name="Test" component={Test} />
+      <Tab.Screen
+        name="Test"
+        component={Test}
+        options={{
+          tabBarLabel: "Image",
+          tabBarIcon: ({ color, size }) =>
+            position != 0 ? (
+              <Image
+                source={listImg[position - 1]}
+                style={{ width: 30, height: 30 }}
+              ></Image>
+            ) : (
+              <Ionicons name="medical" size={size} color={color} />
+            ),
+        }}
+      />
     </Tab.Navigator>
   );
 };

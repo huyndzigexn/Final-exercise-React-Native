@@ -20,6 +20,7 @@ export default function (state = initialState, action: any) {
   switch (action.type) {
     case actionTypes.DETAILS.LOAD_IMAGE:
       const arrState = { ...state };
+      console.log(payload.message);
       arrState.arrImage[arrState.position] = { uri: payload.message };
       return {
         ...state,

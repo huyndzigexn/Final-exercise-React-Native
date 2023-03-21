@@ -7,14 +7,16 @@ const Button = (props: any) => {
 
   useEffect(() => {
     const interVal = setInterval(() => {
+      console.log("Log " + props.position);
       setCount((count) => {
         return count > 0 ? count - 1 : 0;
       });
     }, 1000);
-    if (props.position == 9) {
+
+    return () => {
       clearInterval(interVal);
-    }
-  }, [props.position]);
+    };
+  }, []);
 
   return <Text style={Style.waiting}>{count}</Text>;
 };

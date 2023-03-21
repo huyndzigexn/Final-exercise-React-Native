@@ -18,12 +18,9 @@ const SignIn = (props: any) => {
   const error_message = props.loginReducer.errorMessage;
   const storeData = async () => {
     if (email != "" && password != "") {
-      console.log("====================================");
-      console.log(email);
-      console.log("====================================");
       let datasend = { email: email, password: password };
       await props.login(datasend);
-      navigation.navigate("Details");
+      await navigation.navigate("Details");
     } else {
       let datasend = { email: email, password: password };
       await props.checkvalidate(datasend);

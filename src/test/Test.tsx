@@ -95,7 +95,7 @@ const Test = (props: any) => {
               {props.detailReducer.position == index ? (
                 <Button position={props.detailReducer.position} />
               ) : (
-                <Text style={styles.waiting}>waiting...</Text>
+                <Text style={styles.waiting}>waiting</Text>
               )}
             </View>
           </View>
@@ -112,19 +112,19 @@ const Test = (props: any) => {
           if (value.data.status == "success") {
             props.getImage(value.data);
           } else {
-            props.getImage(
-              "https://images.dog.ceo/breeds/bluetick/n02088632_1750.jpg"
-            );
+            // props.getImage(
+            //   "https://images.dog.ceo/breeds/bluetick/n02088632_1750.jpg"
+            // );
           }
         })
         .catch((error) => {
           console.log(error);
         });
-    }, 10000);
+    }, 1000);
     if (props.detailReducer.position == 9) {
       clearInterval(getImg);
     }
-  }, []);
+  }, [props.detailReducer.position]);
   return (
     <View style={styles.container}>
       <View style={styles.userImage}>
